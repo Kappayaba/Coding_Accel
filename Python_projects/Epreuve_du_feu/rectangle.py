@@ -24,7 +24,7 @@ def rectangle(f1,f2):
 
 		if (target[1] in grid[i + 1]) and (grid[i + 1].index(target[1]) == answer_coord):
 			if (target[2] in grid[i + 2]) and (grid[i + 2].index(target[2]) == answer_coord):
-				return True
+				return (answer_coord, i)
 
 	return False
 

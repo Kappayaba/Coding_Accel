@@ -7,4 +7,7 @@ def factoriel(n):
         return n * factoriel(n-1)
 
 if __name__ == "__main__":
-    print(factoriel(int(sys.argv[1])))
+    try:
+        print(factoriel(int(sys.argv[1])))
+    except IndexError:
+        print("\n\n /!\ You forgot to put a number /!\ \n\n")

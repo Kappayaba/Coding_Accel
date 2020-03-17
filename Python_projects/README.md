@@ -1,0 +1,1 @@
+Python projects, most of them are just exercices i have done but i will probably put some ideas i came with 

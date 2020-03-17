@@ -37,4 +37,7 @@ def anagram(word, file):
     return answer
 
 if __name__ == "__main__":
-    print(anagram(sys.argv[1], sys.argv[2]))
+    try:
+        print(anagram(sys.argv[1], sys.argv[2]))
+    except IndexError:
+        print('\n\n /!\ You forgot to put a word or the file of your dictionary /!\ \n\n')
