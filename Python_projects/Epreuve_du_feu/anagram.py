@@ -15,11 +15,9 @@ def file_to_list(f1):
 def anagram(word, file):
     lst = file_to_list(file)
     answer = []
-
-
+    word_list = list(word)
+    word_list.sort()
     for w in lst:
-        puzzle = ''
-
         if w == word:
             answer.append(w)
             continue
@@ -27,14 +25,14 @@ def anagram(word, file):
         if len(w) != len(word):
             continue
     
-        for letters in w:
-            if w.count(letters) == word.count(letters):
-                puzzle += letters
-        
-        if len(puzzle) == len(word):
+        anagram_lst = list(w)
+        anagram_lst.sort()
+
+        if anagram_lst == word_list:
             answer.append(w)
 
     return answer
+
 
 if __name__ == "__main__":
     try:
