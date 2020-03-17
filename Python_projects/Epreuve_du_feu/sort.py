@@ -7,7 +7,7 @@ def print_sort(lst):
         return False
     else:
         answer = ''
-        for i in recursive_sort(lst):
+        for i in higher_sort(lst):
             answer += '{} '.format(i)
 
         print(answer)
@@ -25,10 +25,10 @@ def check_sort(lst):
             return False
     return True
 
-def recursive_sort(lst):
+def higher_sort(lst):
     """
 
-    Sort a list, recursive manner.
+    Sort a list, reverse gnome sort, recursive manner.
 
     """
     for i in range(1, len(lst)):
@@ -36,17 +36,17 @@ def recursive_sort(lst):
             replace = lst[i]
             del lst[i]
             lst.insert(0, replace)
-            recursive_sort(lst)
+            higher_sort(lst)
     return lst
 
-# def selective_sort(lst):
-#     min = lst[0]
-#     for i in range(len(lst)):
-#         if lst[i] < min:
-#             min = lst[i]
-#     lst.remove(min)
-#     lst.insert(0, min)
-#     print(lst)
+def selective_sort(lst):
+    min = lst[0]
+    for i in range(len(lst)):
+        if lst[i] < min:
+            min = lst[i]
+    lst.remove(min)
+    lst.insert(0, min)
+    print(lst)
 
 
 def sort(arg):
@@ -62,7 +62,7 @@ def sort(arg):
         lst.append(int(arg[i]))
 
 
-    recursive_sort(lst)
+    higher_sort(lst)
     
     return print_sort(lst)
 
