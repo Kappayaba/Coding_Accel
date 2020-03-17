@@ -3,16 +3,21 @@ import sys
 #Exo 4
 
 def print_sort(lst):
-    if not(check_sort(lst)):
-        return False
-    else:
-        answer = ''
-        for i in higher_sort(lst):
-            answer += '{} '.format(i)
+    answer = ''
+    for i in higher_sort(lst):
+        answer += '{} '.format(i)
 
-        print(answer)
-        return True
 
+    print("")
+    print(answer)
+
+
+def switch_in_list(lst, coord1, coord2):
+    a = lst[coord1]
+    lst[coord1] = lst[coord2]
+    lst[coord2] = a
+    
+    return lst
 
 def check_sort(lst):
     """
@@ -36,18 +41,20 @@ def higher_sort(lst):
             replace = lst[i]
             del lst[i]
             lst.insert(0, replace)
+            print(lst)
             higher_sort(lst)
     return lst
 
-def selective_sort(lst):
-    min = lst[0]
-    for i in range(len(lst)):
-        if lst[i] < min:
-            min = lst[i]
-    lst.remove(min)
-    lst.insert(0, min)
-    print(lst)
 
+def bubble_sort(lst):
+    for i in range(1,len(lst)):
+        for i in range(len(lst)-i):
+            bubble = lst[i]
+            if bubble > lst[i+1]:
+                switch_in_list(lst, i, i+1)
+        print(lst)
+            
+    return lst
 
 def sort(arg):
     """
@@ -60,23 +67,21 @@ def sort(arg):
 
     for i in range(1, len(arg)):
         lst.append(int(arg[i]))
-
-
-    higher_sort(lst)
     
-    return print_sort(lst)
+    try:
+        choice = int(input("""### HOW TO SORT ###\n\nGnome method : 1\nBubble method : 2\n\n\nCHOICE : """))
+        print("")
+        if choice == 1:
+            return print_sort(higher_sort(lst))
+        elif choice == 2:
+            return print_sort(bubble_sort(lst))
 
-    # try:
-    #     choice = int(input("""### HOW TO SORT ###\nRecursive : 1\nSelective : 2\n\nCHOICE : """))
+    except NameError:
+        print("""\n\n #########################\n\n YOU NEED TO PUT AN 1 or 2\n\n #########################\n\n""")
 
-    #     if choice == 1:
-    #         return recursive_sort(lst)
-    #     else:
-    #         return selective_sort(lst)
-    # except NameError:
-    #     print("""\n\n #########################\n\n YOU NEED TO PUT AN 1 or 2\n\n #########################\n\n""")
-    # except SyntaxError:
-    #     print("""\n\n #########################\n\n YOU NEED TO PUT AN 1 or 2\n\n #########################\n\n""")
+    except SyntaxError:
+        print("""\n\n #########################\n\n YOU NEED TO PUT AN 1 or 2\n\n #########################\n\n""")
+
 
 if __name__ == "__main__":
     sort(sys.argv)
