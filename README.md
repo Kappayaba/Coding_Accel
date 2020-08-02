@@ -1,3 +1,3 @@
 ## Coding accelerator projects repository 
 
-Just a repository with simple algorithms for the coding accelerator training
+Just a repository with simple algorithms from the coding accelerator training
